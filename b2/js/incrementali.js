@@ -31,8 +31,11 @@ function getIncrementaliUpgradeEffect(i) {
   }
 }
 
+
+
 function getIncrementaliUpgradeAmount(i) {
-  return player.incrementali.upgrades[i] + player.incrementali.galaxies;
+  var singularityBoostStart = 600 // in case this is already to late, or if it needs to be earlier
+  return player.incrementali.upgrades[i] + player.incrementali.galaxies + (Math.max(0,(Decimal.log10(player.singularity.currencyAmount)-singularityBoostStart))**.5/10)
 }
 
 function buyIncrementaliUpgrade(i) {
